@@ -4,8 +4,7 @@
       <h2>Posts</h2>
       <ul class="list-group">
         <app-postlist-item *ngFor="let post of posts"
-                                 [title]= "post.title" [content]="post.content" [created_at]="post.created_at"
-                                 [loveIts]="post.loveIts"
+                           [post]="post"
         ></app-postlist-item>
       </ul>
     </div>

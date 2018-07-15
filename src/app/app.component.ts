@@ -1,5 +1,21 @@
 import { Component } from '@angular/core';
 
+// Classe representant un post dans l'appli
+export class Post{
+  title: string;
+  content: string;
+  loveIts: number;
+  created_at: Date;
+
+  constructor(title: string, content: string, loveIts: number) {
+    this.title = title;
+    this.content = content;
+    this.loveIts = loveIts;
+    this.created_at = new Date();
+  }
+}
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,23 +25,8 @@ export class AppComponent {
 
   // Liste des posts
   posts = [
-    {
-      title : "Mon premier post",
-      content : "lore ipsum",
-      loveIts : 0,
-      created_at : new Date()
-    },
-    {
-      title : "Mon deuxieme post",
-      content : "lore ipsum",
-      loveIts : 2,
-      created_at : new Date()
-    },
-    {
-      title : "Mon troisieme post",
-      content : "lore ipsum",
-      loveIts : -1,
-      created_at : new Date()
-    }
+      new Post("Mon premier post","lore ipsum",0),
+      new Post("Mon deuxieme post", "lore ipsum post", 2),
+      new Post("Mon troisieme post", "lore ipsum post", -1)
   ];
 }
