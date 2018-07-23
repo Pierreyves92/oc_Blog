@@ -3,9 +3,26 @@
     <div class="col-xs-12">
       <h2>Posts</h2>
       <ul class="list-group">
-        <app-postlist-item *ngFor="let post of posts"
-                           [post]="post"
-        ></app-postlist-item>
+
+        <li  *ngFor="let post of posts" [ngClass] ="{'list-group-item': true, 
+        'list-group-item-success': post.loveIts > 0,
+        'list-group-item-danger': post.loveIts < 0
+        }">
+          <div class="row" >
+            <div class="col-xs-9"><h4>{{post.title}}</h4> </div>
+            <div class="col-xs-3">{{post.created_at | date: 'short'}}</div>
+          </div>
+          <div class="row">{{post.content}}</div>
+          <div class="row">
+            <button class="btn btn-success" (click)="onLike(post)">Love it</button>
+            <button class="btn btn-danger" (click)="onDislike(post)">Don't love it</button>
+            Hits : <span class="badge">{{post.loveIts}}</span>
+            <button class="btn btn-default pull-right" (click)="onDeletePost(post)">
+              <span class="glyphicon glyphicon-minus"></span>
+            </button>
+          </div>
+
+        </li>
       </ul>
     </div>
   </div>
